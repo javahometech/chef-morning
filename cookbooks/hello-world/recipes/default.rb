@@ -9,9 +9,15 @@
 
 # Chef creates this file on the node
 
-directory '/var/javahome' do
+package 'httpd' do
+  action :install
 end
 
-file '/var/index.php' do
-  content 'Welcome to chef development'
+file '/var/www/html/index.html' do
+  content 'Chef flow is automated with jenkins'
+end
+
+
+service 'httpd' do
+  action [:start,:enable]
 end
